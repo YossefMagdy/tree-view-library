@@ -1,24 +1,50 @@
 # NgxRooted
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+ [angular tree component_Demo]()
 
-## Code scaffolding
+This is an Angular Tree View library that helps to display nested and hierarchical data in a tree-like structure. The library is useful for organizing and visualizing complex data sets, such as geographic locations, file systems, or categorizations
 
-Run `ng generate component component-name --project ngx-rooted` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-rooted`.
-> Note: Don't forget to add `--project ngx-rooted` or else it will be added to the default project in your `angular.json` file. 
+## Installation
 
-## Build
+```bash
+npm i ngx-rooted-tree
+```
 
-Run `ng build ngx-rooted` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Getting started
 
-## Publishing
+```
+import {  NgxRootedModule} from 'ngx-rooted-tree';
 
-After building your library with `ng build ngx-rooted`, go to the dist folder `cd dist/ngx-rooted` and run `npm publish`.
+@NgModule({
+  declarations: [AppComponent],
+  imports: [NgxRootedModule],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+```
 
-## Running unit tests
+In template use ngx-rooted  component with your options
 
-Run `ng test ngx-rooted` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+ <ngx-rooted  [nodes]="treeList" [currentLang]="currentLang" (onNodeSelected)="onSelectNode($event)">
+</ngx-rooted>
 
-## Further help
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+`onNodeSelected ==> custom eventEmitter`
+
+Type accept
+
+```
+interface RootTree {
+    id: number;
+    localeName: string;
+    enName: string;
+    type: string;
+    level: number;
+    hasDeductibleBalance?: boolean;
+    children: RootTree[];
+    numberOfMainChild: number;
+    numberOfBranchChild: number;
+  }
+```

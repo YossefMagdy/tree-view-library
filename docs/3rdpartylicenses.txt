@@ -10,7 +10,7 @@ MIT
 @angular/router
 MIT
 
-ngx-rooted
+ngx-rooted-tree
 
 rxjs
 Apache-2.0

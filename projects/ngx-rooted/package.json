@@ -1,6 +1,6 @@
 {
   "name": "ngx-rooted-tree",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "peerDependencies": {
     "@angular/common": "^15.2.0",
     "@angular/core": "^15.2.0"
