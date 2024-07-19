@@ -1,0 +1,105 @@
+@import "../vairables.scss";
+
+.node{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline-start:1px;    
+    padding-inline-end:10px;    
+    height: 34px;
+    background-color: white;
+    box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.04);
+    border-radius: 17px;
+    z-index: 99;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    
+    .node-content{
+        width: inherit;
+        display: flex;
+        align-items: center;
+        .tree-root{
+            display: flex;
+            align-items: center;
+        }
+        p{  
+            width: calc(100% - 20%);
+            min-width: 100px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            flex: 1;       
+            margin: 0 10px;
+        }
+    }
+    
+    .nodeImage{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: $ray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            width: 12px;
+            height: 12px;
+        }
+    }
+   
+}
+
+.node:hover{
+    border: 1px solid $main-color;
+    .nodeImage{
+        border: 1px solid $primary;
+    }
+    
+}
+
+.branchClick{
+    border: 1px solid $primary !important;
+    color:$primary;
+    font-weight:600;
+    .nodeImage{
+        width: 29px;
+        height: 29px;
+        border: 2px solid $primary !important;
+    }
+}
+
+.childnode{
+    border-inline-start: 1px solid $light;
+    overflow: hidden;
+    transition: 0.3s;
+}
+.childnode-last{
+    border-inline-start: none;
+    position: relative;
+}
+
+.childnode:last-of-type::before{
+    content: "";
+    position: absolute;
+    height: 46px;
+    right: 0;
+    background-color: #c9cbd5;
+}
+
+.root{
+    position: relative;
+    height: 1px;
+    top: 3px;
+    // background-color: $light;
+    z-index: 99999;
+}
+.root::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #c9cbd5;
+    border-end-start-radius: 20px;    
+    bottom: 0;
+}

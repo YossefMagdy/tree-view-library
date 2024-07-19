@@ -1,0 +1,31 @@
+<div *ngFor="let node of nodes; let i = index" class="childnode" >
+    <div #nodeContent class="node-content" [ngStyle]="{'height': isNodeOpen(node) ? 'auto' : '45px'}"  >
+      <div  style="display: flex;align-items: center;" (click)="toggleNode(node, i)">
+        <div [ngStyle]="{'width': ((26 * node.level) + 'px')}" class="root"></div>
+        <div  style="margin-top: .5rem;" class="node" [ngStyle]="{'width': (nodeWidth - (node.level - 1) * 26)>200  ? ((nodeWidth - (node.level - 1) * 26)  + 'px'):'200px'}" [id]="node.id"  (click)="selectNode(node,i)">
+          <div class="node-content">
+            <div class="nodeImage">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                <path d="M12 10.917h-.034V12H.034v-1.083H0V.542C0 .242.243 0 .542 0h6.543c.3 0 .542.243.542.542v10.375h3.288V5.646H9.268V4.563h2.19c.3 0 .542.242.542.541v5.813zM1.085 1.083v9.834h5.457V1.083H1.085zm1.644 4.563h2.17v1.083h-2.17V5.646zm0-2.167h2.17v1.083h-2.17V3.48z" fill="#2D4190" fill-rule="nonzero" />
+              </svg>
+            </div>
+            <p style="white-space: nowrap;" [title]="currentLang === 'en' ? node?.enName : node?.localeName">{{ currentLang === 'en' ? node?.enName : node?.localeName }}</p>
+            <div *ngIf="node.children.length" style="margin: 0 5px; width: 20px;">
+              <svg [ngStyle]="{'rotate': isNodeOpen(node) ? '180deg' : '0deg'}" width="10px" height="10px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+             
+                <g id="icons/arrow-down-type-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <rect id="bounding-box" x="0" y="0" width="64" height="64"></rect>
+                  <path d="M6.41824523,13 L57.5817548,13 C61.1264537,13 64,15.842263 64,19.3483722 C64,21.0320651 63.323794,22.6467984 62.1201395,23.8373492 L36.5383847,49.1406048 C34.0319041,51.6197984 29.9680959,51.6197984 27.4616153,49.1406048 L1.8798605,23.8373492 C-0.626620168,21.3581556 -0.626620168,17.3385887 1.8798605,14.8593952 C3.08351497,13.6688444 4.71602076,13 6.41824523,13 Z" id="Path" fill="#2d4190" fill-rule="nonzero"></path>
+                </g>
+              </svg>
+            </div>
+          </div>
+            
+        </div>
+      </div>
+      <!-- Recursive call to render child nodes -->
+      <div style="margin-inline-start: -1px;">
+        <lib-recursive-tree [nodes]="node.children" [nodeWidth]="nodeWidth" (onNodeSelected)="selectNode($event, i)" [currentLang]="currentLang"></lib-recursive-tree>
+      </div>
+    </div>
+  </div>

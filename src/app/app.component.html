@@ -1,0 +1,7 @@
+<div class="tree-preview  mt-4">
+  <ngx-rooted (onNodeSelected)="onNodeSelected($event)"  [nodes]="treeData" ></ngx-rooted>
+   
+  <div class="json-preview">
+          <pre>{{ chosenNode | json }}</pre>
+  </div>
+</div>

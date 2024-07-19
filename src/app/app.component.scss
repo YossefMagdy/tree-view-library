@@ -1,0 +1,43 @@
+.tree-preview{
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+
+}
+
+.json-preview {
+    overflow-x: hidden;
+    width: 400px;
+    background-color: black;
+    height: 600px;
+    color: white;
+    padding: 10px;
+    overflow-y: scroll;
+    border-radius: 10px;
+}
+
+.json-key {
+    color: #6be7ff; /* Adjust color as needed */
+}
+
+.json-value {
+    color: #9eff9a; /* Adjust color as needed */
+}
+
+.json-preview::-webkit-scrollbar {
+    display: block;
+    width: 4px;   
+  }
+  
+  
+  .json-preview::-webkit-scrollbar-track {
+    background-color: gray;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .json-preview::-webkit-scrollbar-thumb {
+    background: yellow !important;
+    border-radius: 10px;
+  }

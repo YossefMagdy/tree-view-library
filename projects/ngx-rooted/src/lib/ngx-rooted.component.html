@@ -1,0 +1,44 @@
+<div  class="tree-view" [ngStyle]="{'height':treeOpen?'600px':'35px','overflow-y':treeOpen?'scroll':'hidden'}" >
+    <div class="tree-node" (click)="selectNode(nodes[0])" [id]="nodes[0].id" (click)="handleChild()">
+      <div class="title">
+        <img class="main" [src]="baseTreeImg" alt="tree" />
+        <span>
+          {{ currentLang === "en" ? nodes[0].enName :  nodes[0].localeName }}
+        </span>
+      </div>
+      <div *ngIf=" nodes[0].children?.length">
+        <svg 
+          [ngStyle]="{'rotate':treeOpen?'180deg':'0deg'}"
+          width="10px"
+          height="10px"
+          viewBox="0 0 64 64"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+        >
+          <g
+            id="icons/arrow-down-type-1"
+            stroke="none"
+            stroke-width="1"
+            fill="none"
+            fill-rule="evenodd"
+          >
+            <rect id="bounding-box" x="0" y="0" width="64" height="64"></rect>
+            <path
+              d="M6.41824523,13 L57.5817548,13 C61.1264537,13 64,15.842263 64,19.3483722 C64,21.0320651 63.323794,22.6467984 62.1201395,23.8373492 L36.5383847,49.1406048 C34.0319041,51.6197984 29.9680959,51.6197984 27.4616153,49.1406048 L1.8798605,23.8373492 C-0.626620168,21.3581556 -0.626620168,17.3385887 1.8798605,14.8593952 C3.08351497,13.6688444 4.71602076,13 6.41824523,13 Z"
+              id="Path"
+              fill="#ffff"
+              fill-rule="nonzero"
+            ></path>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <lib-recursive-tree
+      [nodes]="nodes[0].children"
+      [nodeWidth]="nodeWidth"
+      (onNodeSelected)="selectNode($event)"
+      [currentLang]="currentLang"
+    ></lib-recursive-tree>
+  </div>
+  
